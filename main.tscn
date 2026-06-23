@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://dmykk6qies6ch"]
 
 [ext_resource type="Script" uid="uid://bnyrmj10ddp7e" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cmd0gunnanjsj" path="res://Scenes/tilemaps.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bv3v3c8sbqd6a" path="res://Assets/Sprites/Room/PlayerPlaceholder.png" id="3_h2yge"]
 
 [node name="Main" type="Node" unique_id=1955998666]
 script = ExtResource("1_ig7tw")
+
+[node name="Tilemaps" parent="." unique_id=785688038 instance=ExtResource("2_0xm2m")]
+
+[node name="PlayerPlaceholder" type="Sprite2D" parent="." unique_id=1601520919]
+position = Vector2(97, 582)
+texture = ExtResource("3_h2yge")
