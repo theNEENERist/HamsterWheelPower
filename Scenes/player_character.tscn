@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://pw108b7nch6y"]
 
-[ext_resource type="Texture2D" uid="uid://bv3v3c8sbqd6a" path="res://Assets/Sprites/Room/PlayerPlaceholder.png" id="1_qcwfp"]
+[ext_resource type="Script" uid="uid://bs4qjwig5vgkg" path="res://Scripts/player_character.gd" id="1_cmdk4"]
+[ext_resource type="Texture2D" uid="uid://bv3v3c8sbqd6a" path="res://Assets/Sprites/Player/PlayerPlaceholder.png" id="1_qcwfp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cmdk4"]
 animations = [{
@@ -18,6 +19,7 @@ radius = 8.0
 height = 26.0
 
 [node name="Player Character" type="CharacterBody2D" unique_id=1090640668]
+script = ExtResource("1_cmdk4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1593867596]
 sprite_frames = SubResource("SpriteFrames_cmdk4")
