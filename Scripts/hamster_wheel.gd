@@ -1,18 +1,26 @@
-extends Area2D
+extends AnimatedSprite2D
 
-@export var tooltip_text: String = "E"
+@export var speed = 400
 
-var tooltip_label: Label
+var wheel_selected: bool = true
+var screen_size # Size of the game window.
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready():
+	screen_size = get_viewport_rect().size
 
-# shows tooltip when the player is colliding with the wheel.
-func tooltip_show() -> void:
-	$"ToolTipLabel".text = tooltip_text
-	$"ToolTipLabel".show()
 
- # hides the tooltip if player is not colliding with the wheel.
-func tooltip_hide() -> void:
-	$"ToolTipLabel".hide()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	var wheel_velocity = Vector2.ZERO # The player's movement vector.
+	if wheel_selected:
+		if Input.is_action_pressed("ui_right"):
+			wheel_velocity.x += 1
+		elif Input.is_action_pressed("ui_left"):
+			wheel_velocity.x -= 1
+
+		if wheel_velocity.length() > 0:
+			wheel_velocity = wheel_velocity.normalized() * speed
+
+		position += wheel_velocity * delta
+		position = position.clamp(Vector2.ZERO, screen_size)
