@@ -1,15 +1,23 @@
 [gd_scene format=3 uid="uid://d3yowfq0lpr8u"]
 
-[node name="HUD" type="CanvasLayer" unique_id=570030546]
+[ext_resource type="Script" uid="uid://c5bbkbn12x5ul" path="res://Scripts/hud.gd" id="1_e0onf"]
 
-[node name="PowerLabel" type="Label" parent="." unique_id=49270501]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.515171, 0.00019184918, 0.5161381, 1)
-theme_override_font_sizes/font_size = 64
-text = "0"
+[sub_resource type="Theme" id="Theme_e0onf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fccik"]
+bg_color = Color(0.0063492884, 0.6019764, 9.62615e-07, 1)
+
+[node name="HUD" type="CanvasLayer" unique_id=570030546]
+script = ExtResource("1_e0onf")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=647494945]
+offset_left = 29.0
+offset_top = 23.0
+offset_right = 1097.0
+offset_bottom = 52.0
+theme = SubResource("Theme_e0onf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fccik")
+max_value = 25.0
+show_percentage = false
+
+[connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]
