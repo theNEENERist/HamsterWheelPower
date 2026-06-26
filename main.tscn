@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b6hex0ms45x0u" path="res://Scenes/hamster_wheel.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://pw108b7nch6y" path="res://Scenes/player_character.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c4shxeqmuiur6" path="res://Scenes/computer.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://d3yowfq0lpr8u" path="res://Scenes/hud.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://c5bbkbn12x5ul" path="res://Scripts/hud.gd" id="7_272bh"]
 
 [node name="Main" type="Node" unique_id=1955998666]
 script = ExtResource("1_ig7tw")
@@ -19,3 +21,15 @@ position = Vector2(207, 592)
 
 [node name="Player Character" parent="." unique_id=1090640668 instance=ExtResource("3_h2yge")]
 position = Vector2(165, 592)
+
+[node name="HUD" parent="." unique_id=570030546 instance=ExtResource("6_7mycd")]
+script = ExtResource("7_272bh")
+
+[node name="Power Up Timer" type="Timer" parent="." unique_id=1820879917]
+wait_time = 0.5
+
+[node name="Power Down Timer" type="Timer" parent="." unique_id=2003629736]
+wait_time = 2.0
+
+[connection signal="timeout" from="Power Up Timer" to="." method="_on_power_up_timer_timeout"]
+[connection signal="timeout" from="Power Down Timer" to="." method="_on_power_down_timer_timeout"]
