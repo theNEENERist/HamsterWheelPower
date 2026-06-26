@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6hex0ms45x0u"]
 
 [ext_resource type="Texture2D" uid="uid://c7nccjkigi4li" path="res://Assets/Sprites/Wheel/Wheel.png" id="1_at4it"]
+[ext_resource type="Script" uid="uid://hgg26lj0cua2" path="res://Scripts/hamster_wheel.gd" id="2_hisx3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hisx3"]
 animations = [{
@@ -15,3 +16,4 @@ animations = [{
 
 [node name="Hamster Wheel" type="AnimatedSprite2D" unique_id=1745696678]
 sprite_frames = SubResource("SpriteFrames_hisx3")
+script = ExtResource("2_hisx3")
