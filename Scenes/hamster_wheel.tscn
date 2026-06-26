@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6hex0ms45x0u"]
 
 [ext_resource type="Texture2D" uid="uid://c7nccjkigi4li" path="res://Assets/Sprites/Wheel/Wheel.png" id="1_at4it"]
-[ext_resource type="Script" uid="uid://hgg26lj0cua2" path="res://Scripts/hamster_wheel.gd" id="2_hisx3"]
+[ext_resource type="Script" uid="uid://dkl26n01qah01" path="res://Scripts/hamster_wheel.gd" id="3_hhlj4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hisx3"]
 animations = [{
@@ -14,6 +14,35 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Hamster Wheel" type="AnimatedSprite2D" unique_id=1745696678]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hisx3"]
+size = Vector2(81, 56)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhlj4"]
+
+[node name="Hamster Wheel" type="Area2D" unique_id=1225893140]
+script = ExtResource("3_hhlj4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1745696678]
 sprite_frames = SubResource("SpriteFrames_hisx3")
-script = ExtResource("2_hisx3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=55599518]
+position = Vector2(-0.5, 4)
+shape = SubResource("RectangleShape2D_hisx3")
+
+[node name="ToolTipLabel" type="RichTextLabel" parent="." unique_id=1458101361]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -52.0
+offset_right = 10.5
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hhlj4")
+text = "E"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="AnimatedSprite2D" method="_on_hamster_wheel_body_entered"]
