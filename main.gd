@@ -39,11 +39,12 @@ func power_down() -> void:
 # listens for left and right input events and starts/stops the power up and down timers accordingly if the wheel is selected.
 # will change the wheel_selected variable if the player presses the interact button while colliding with the wheel.
 func _input(event):
+	print(Globals.wheel_selected)
 	if Globals.wheel_selected:
-		if event.is_action_pressed("ui_right") or event.is_action_pressed("ui_left"):
+		if event.is_action_pressed("Right") or event.is_action_pressed("Left"):
 			$"Power Up Timer".start()
 			$"Power Down Timer".stop()
-		if event.is_action_released("ui_right") or event.is_action_released("ui_left"):
+		if event.is_action_released("Right") or event.is_action_released("Left"):
 			$"Power Down Timer".start()
 			$"Power Up Timer".stop()
 
